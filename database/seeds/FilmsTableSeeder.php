@@ -33,7 +33,10 @@ class FilmsTableSeeder extends Seeder
                 'updated_at'        => $dateNow
             ]);
 
-            DB::table('films')->where('id',$last_id)->first();
+            DB::table('film_genres')->insertGetId([
+                'name'    => $faker->words(3)[0],
+                'film_id' => $last_id
+            ]);
 
             $user = User::find(1);
             $film = Film::find($last_id);
